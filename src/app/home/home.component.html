@@ -1,0 +1,200 @@
+<app-navbar></app-navbar>
+<div class="body ">
+    
+    <div class="d-flex justify-content-between align-items-">
+        <div class="main-text mt-5">
+            <p class="mb-1 f1">Predictable</p>
+            <p class="mb-1 f1">Growth Starts</p>
+            <p class="mb-1 f1">here.</p>
+            <p class="mt-2 f2">Accurate Sales Forecasts for Business Success.<br> Take the guesswork out of sales planning and make data-driven decisions</p>
+            <div *ngIf="userFound; then f else gs"></div>
+            <ng-template #gs><button class="btn btn-primary rounded mt-3" routerLink="/signup">Get Started</button></ng-template>
+            <ng-template #f><button class="btn btn-primary rounded mt-3" routerLink="/forecast">Forecast</button></ng-template>
+        </div>
+        <div class="p-2 bg-white rounded">
+            <img src="../../assets/9649039_6854.jpg" class="d-none d-md-block" width="100%" height="500px" alt="">
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="d-flex align-items-center justify-content-center">
+        <hr style="width: 20%;border-width: 3px ;color:black">
+        <p class="text-center font1 mx-4">
+            Features
+        </p>
+        <hr style="width: 20%;border-width: 3px ;color:black">
+    </div>
+    <div class="feature-cont my-3">
+    
+        <div class="feature py-4 px-4 mt-4 text-center">
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    insights
+                </span>
+            </div>
+            <span class="mt-3 mb-2 font0">
+                Interactive<br> Graphs
+            </span>
+            <span class="fontf">
+                Whether you're a data enthusiast, a professional, or a student, our interactive graphs will help you explore data sets and draw meaningful conclusions
+            </span>
+        </div> 
+        <div class="feature py-4 px-4 mt-4 text-center">
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    new_releases
+                </span>
+            </div>
+            <span class="mt-3 mb-2 font0">
+                Easy<br> Accessibility 
+            </span>
+            <span class="fontf">The Sale Forecast app strives to provide accessibility features that make the app usable and enjoyable for individuals with diverse abilities</span>
+        </div>
+        <div class="feature py-4 px-4 mt-4 text-center">
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    check
+                </span>
+            </div>
+            <span class="mt-3 mb-2 font0">
+                Accuracy<br> >90%
+            </span>
+            <span class="fontf">The app is designed with a strong emphasis on achieving a high level of accuracy, aiming for an accuracy rate of over 90%</span>
+        </div>
+        <div class="feature py-4 px-4 mt-4 text-center">
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    pip
+                </span>
+            </div>
+            <span class="mt-3 mb-2 font0">
+                Responsive<br> Design
+            </span>
+            <span class="fontf">We ensuring that our app provides a seamless and optimal user experience across different devices and screen sizes.</span>
+        </div>
+        <div class="feature py-4 px-4 mt-4 text-center">
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    percent
+                </span>
+            </div>
+            <span class="mt-3 mb-2 font0">
+                Accuracy<br> Analysis
+            </span>
+            <span class="fontf">Provides tools to evaluate the accuracy of past sales forecasts by comparing the projected sales with the actual sales data. </span>
+        </div>
+        <div class="feature py-4 px-4 mt-4 text-center" >
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    stylus_laser_pointer
+                    </span>
+            </div>
+            <span class="mt-3 mb-2 font0">
+                Flexible<br> Model
+            </span>
+            <span class="fontf">
+                Our Machine Learning model adapt to any dataset that has a date and sales column in it.
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="sub my-5">
+    <div class="sub-cnt container d-flex align-items-center justify-content- ">
+        <img class="d-none d-lg-block" src="../../assets/My project.png" width="400px" alt="">
+
+        <div>
+            <h2><span >Subscribe</span> to Our<br>Newsletter</h2>
+        <p>Subscribe to our newsletter to receive instant Notification</p>
+        <div class="sub-inp">
+            <input type="email" class="form-control" [(ngModel)]="email" placeholder="user123@gmail.com" >
+            <div class="sub-btn">
+                <button class="btn btn-primary" (click)="newsletter()">
+                    <div *ngIf="newsloader; then load else sub"></div>
+                    <ng-template #load>
+                    <div class="spinner-border spinner-border-sm text-light" ></div>
+                    </ng-template>
+                    <ng-template #sub>
+                        Subscribe
+                    </ng-template>
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="test">
+    <div class="d-flex align-items-center justify-content-center">
+        <hr style="width: 20%;border-width: 3px ;color:black">
+        <p class="text-center font1 mx-4">
+            How We Help People
+        </p>
+        <hr style="width: 20%;border-width: 3px ;color:black">
+    </div>
+
+    <div class="test-content mb-5 container">
+        <div class="test-block mt-5 p-4 d-flex flex-column align-items-center justify-content-center ">
+            <span class="material-symbols-outlined"
+            style="font-size: 64px; color:#0d6efd">
+                format_quote
+            </span>
+            <p class="text-center m-0" style="font-weight: 500;">
+                "This sales forecast app has been a game-changer for our business. 
+                Its accurate predictions and user-friendly interface have allowed 
+                us to make informed decisions and optimize our sales strategies. Highly recommended!"
+            </p>
+            <p class="mb-0 mt-4" style="font-size: 18px; font-weight: 500;">
+                John Smith
+            </p>
+            <p class="mb-0 mt-2" style="font-size: 14px; font-weight: 500; opacity: 0.8;">
+                CEO of XYZ Company
+            </p>
+        </div>
+
+        <div class="test-block mt-5 p-4 d-flex flex-column align-items-center justify-content-center ">
+            <span class="material-symbols-outlined"
+            style="font-size: 64px; color:#0d6efd">
+                format_quote
+            </span>
+            <p class="text-center m-0" style="font-weight: 500;">
+                "We have tried various sales forecast tools, but this app stands out. 
+                Its exceptional accuracy and intuitive design have provided us with a competitive edge. 
+                This app is now an indispensable tool for our sales team."
+            </p>
+            <p class="mb-0 mt-4" style="font-size: 18px; font-weight: 500;">
+                Sarah Johnson,            
+            </p>
+            <p class="mb-0 mt-2" style="font-size: 14px; font-weight: 500; opacity: 0.8;">
+               Sales Manager at ABC Company 
+            </p>
+        </div>
+
+        <div class="test-block mt-5 p-4 d-flex flex-column align-items-center justify-content-center ">
+            <span class="material-symbols-outlined"
+            style="font-size: 64px; color:#0d6efd">
+                format_quote
+            </span>
+            <p class="text-center m-0" style="font-weight: 500;">
+                "Ever since we started using this sales forecast app, our sales planning has reached new heights.
+                 Its advanced algorithms and comprehensive analytics have revolutionized our forecasting accuracy.
+                  A must-have tool "
+            </p>
+            <p class="mb-0 mt-4" style="font-size: 18px; font-weight: 500;">
+                Mark Davis
+            </p>
+            <p class="mb-0 mt-2" style="font-size: 14px; font-weight: 500; opacity: 0.8;">
+                Owner of XYZ Store
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<footer class="bg-primary">
+    <div class="text-center text-white">
+        <p class='m-0 py-2'>&copy; 2023 Sale Forecast. All rights reserved.</p>
+    </div>
+</footer>

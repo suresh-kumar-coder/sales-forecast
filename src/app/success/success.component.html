@@ -1,0 +1,35 @@
+<div class="main d-flex flex-column justify-content-center align-items-center">
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="success text-center" width="300" height="600" viewBox="0 0 101 101" fill="none">
+        <ellipse cx="50.5171" cy="49.9367" rx="11.5213" ry="11.5497" fill="#00AC3E"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" class="checkmark" d="M45.2576 48.604L49.084 52.6483L55.1814 46.1154" stroke="white" stroke-width="2.5"/>
+        <line  class="line1" x1="61.8656" y1="13.4946" x2="58.3004" y2="26.8" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line2" x1="84.906" y1="32.622" x2="72.9767" y2="39.5094" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line3" x1="87.6729" y1="62.4366" x2="74.3675" y2="58.8715" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line4" x1="68.5467" y1="85.4764" x2="61.6593" y2="73.5471" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line5" x1="45.1935" y1="75.715" x2="41.6283" y2="89.0205" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line6" x1="29.1204" y1="64.8283" x2="17.1911" y2="71.7157" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line7" x1="25.4527" y1="45.765" x2="12.1473" y2="42.1998" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+        <line  class="line8" x1="36.3394" y1="29.6917" x2="29.452" y2="17.7624" stroke="#00AC3E" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+
+    <p style="font-size: 32px; color:#00AC3E;
+    font-weight: 500;" class="">
+        Successfull!
+    </p>
+    <p *ngIf="this.rc.flag.regToSuccess">
+        Your account has been created!
+    </p>
+    <button class="btn " style="background-color: #00AC3E;color:#fff;" 
+    [routerLink]="this.rc.flag.regToSuccess ? '/signin' : '/home'">
+        <div *ngIf="this.rc.flag.regToSuccess; then login else dash"> </div>
+            <ng-template #login>
+                Log In
+            </ng-template>
+            <ng-template #dash>
+                Go to Dashboard
+            </ng-template>
+       
+    </button>
+
+</div>

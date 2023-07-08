@@ -1,0 +1,121 @@
+.body {
+    width: 100%;
+    height: 100vh;
+    padding-top: 56px;
+    // background-color: #0d6efd1a;
+    padding-left: 10%;
+    padding-right: 10%;
+    .main-text{
+        width: 400px;
+        .f1{
+            font-size: 48px;
+            font-weight: 800;
+            color: rgb(0, 48, 120);
+        }
+        .f2{
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+    }
+    
+  }
+
+ .feature-cont{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-left: 10%;
+    padding-right: 10%;
+    .feature{
+        cursor: pointer;
+        min-width: 300px;
+        max-width: 300px;
+        background-color: #0d6efd1a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        .icon{
+            background-color: #0d6efd;
+            border-radius: 10px;
+            span{
+                font-size: 52px;
+                color: white;
+                padding: 10px;
+            }
+        }
+        .font0{
+            font-size: 20px;
+            font-weight: 500;
+            color: rgb(0, 48, 120);
+        }
+        .fontf{
+            font-weight: 450;
+            opacity: 0.8;
+        }
+    }
+ }
+
+ .font1{
+    font-size: 32px;
+    font-weight: 700;
+    color: rgb(0, 48, 120);
+ }
+
+ .sub{
+    height: 320px;
+    background-color: rgb(0, 48, 120);
+    display: flex;
+    align-items: center;
+    color: #f7fff7;
+}
+
+.sub-cnt button{
+    border-radius: 20px;
+    height: 35px;
+    font-weight: 500;
+    color: #ffffea;
+    background-color: #0d6efd;
+    border: none;
+}
+
+.sub-cnt input{
+    width: 350px;
+    border-radius: 30px;
+    height: 40px;
+    border: none;
+}
+
+.sub-inp{
+    position: relative;
+    width: 370px;
+    margin-top: 30px;
+}
+
+.sub-btn{
+    position: absolute;
+    top: 3px;
+    right: 25px;
+}
+
+.sub-cnt input::placeholder{
+    padding-left: 10px;
+    font-weight: 500;
+}
+
+.test-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    .test-block{
+        width: 300px;
+        background-color: #0d6efd1a;
+        border-top: 10px solid #0d6efd;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px ;
+    }
+}

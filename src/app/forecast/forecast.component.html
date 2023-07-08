@@ -1,0 +1,193 @@
+<div class="body">
+    <app-navbar></app-navbar>
+    
+    <div class="d-flex flex-column justify-content-center align-items-center py-5">
+
+        <div class="main">
+            <div class="target d-none mt-4 p-3 rounded" style=" font-weight: 500;">
+                <p class="m-0 font2" >With our powerful and intuitive Sales Forecast App, you can accurately predict your future sales and make informed business decisions.
+                </p>
+            </div>
+    
+            <div class="file-upload p-3 rounded mt-5">
+                <p class="font">
+                    Upload your file here:
+                </p>
+                <div class="drop-area rounded p-3 d-flex flex-column justify-content-center align-items-center"
+                (dragover)="dragOver($event)" (dragleave)="dragLeave($event)"
+                (drop)="drop($event)">
+                    <span class="material-symbols-outlined icon">
+                        upload
+                    </span>
+                    <p class="m-0 mt-2 font2">
+                        {{displayString}} or
+                        <span style="color:#0d6efd; cursor: pointer;" (click)="input.click()">
+                            Choose file
+                        </span> to upload 
+                        <input type="file" class="d-none" accept=".csv" (change)="uploadThruIp($event)" multiple="false" #input>
+                    </p>
+                    <p class="font1 mt-3  mb-0">supports: csv</p>
+                </div>
+    
+                <div class="file-display p-2 mt-3 rounded" *ngIf="file.name != ''">
+                    <div class="d-flex justify-content-between">
+                        <div class=" d-flex">
+                            <span class="material-symbols-outlined icon1">
+                                description
+                            </span>
+                            <div class="ms-2">
+                                <p class="m-0 font2">{{file.name}}</p>
+                                <p class="m-0 font1">{{file.size}} &#8901; Click upload!</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="material-symbols-outlined font-2" 
+                            (click)="file.name='';this.loader[0] = false;this.loader[1] = false" style="cursor: pointer;">
+                                close
+                                </span>
+                        </div>
+                    </div>
+                  
+                </div>
+    
+                <div class="text-end mt-3" *ngIf="file.name != ''">
+                    <button class="btn btn-primary" [disabled]="loader[0]" (click)="upload(0)">
+                        <div *ngIf="loader[0]; then load else sign"></div>
+                            <ng-template #load>
+                            <div class="spinner-border spinner-border-sm text-light" ></div>
+                            </ng-template>
+                            <ng-template #sign>
+                                upload data
+                            </ng-template>
+                    </button>
+                </div>
+    
+                <div class="d-flex justify-content-around align-items-center mt-2">
+                    <hr class="line"> 
+                    <span class="font1">OR</span>
+                    <hr class="line"> 
+                </div>
+    
+                <div class="mt-1">
+    
+                    <div class="form-group">
+                        <label for="url" class="font2 mb-2 "> 
+                            Import from URL
+                        </label>
+                        <div class="input-group">
+                            <input type="url" id="url" class="form-control"  [(ngModel)]="url" autocomplete="off"
+                            placeholder="https://www.kaggle.com/datasets/amazon-sales-dataset/download" #u>
+                        <button class="input-group-append btn btn-primary" (click)="upload(1)" style="z-index: 0;" [style.cursor]=" u.value=='' ? 'none' : 'pointer'" [disabled]="u.value == ''">
+                            <div *ngIf="loader[1]; then load else up"></div>
+                            <ng-template #load>
+                            <div class="spinner-border spinner-border-sm text-light" ></div>
+                            </ng-template>
+                            <ng-template #up>
+                                    upload
+                            </ng-template>
+                        </button>
+                        </div>
+                    </div>
+                    <p class="m-0 mt-2 font3" *ngIf="!this.fdata.file && submit">
+                        *Kindly upload the data
+                    </p>
+    
+                </div>            
+            </div> 
+    
+                <div class="target rounded p-3 mt-2">
+                    <label for="target" class="font2">
+                        Choose Target Variable: 
+                        <span class="font1">
+                            eg. sale
+                        </span>
+                    </label>
+                    <div class="form-group mb-3 mt-3">
+                        <select class="form-select" id="target" name="col" required [(ngModel)]="fdata.target" #tar>
+                          <option *ngFor="let item of arr" [value]="item">{{item}}</option>
+                        </select>
+                    </div>
+                    <p class="m-0 font3" *ngIf="tar.value == '' && submit">
+                        *please choose the target
+                    </p>
+                </div>
+        
+                <div class="target rounded p-3 mt-2">
+                    <div class="form-group ">
+                        <label for="tinter" class="font2 mb-3">Time Interval:</label>
+                        <select class="form-select" id="tinter" name="time-int" [(ngModel)]="fdata.ti" #ti>
+                          <option value="Weekly">Weekly</option>
+                          <option value="Monthly">Monthly</option>
+                          <option value="Yearly">Yearly</option>
+                        </select>
+                    </div>
+                    <p class="m-0 mt-3 font3" *ngIf="ti.value=='' && submit">
+                        *please choose the time interval
+                    </p>
+                </div>
+        
+                <div class="target rounded p-3 mt-2">
+                    <div class="form-group ">
+                        <label for="count" class="font2 mb-3">{{ti.value}} Count:</label>
+                        <input type="number" class="form-control" [(ngModel)]="fdata.tc" #tc>
+                    </div>
+                    <p class="m-0 mt-3 font3" *ngIf="tc.value=='' && submit">
+                        *please choose the {{ti.value}} Count
+                    </p>
+                </div>
+                
+                <button class="btn btn-primary mt-4 w-100"  (click)="validate()">
+                    <div *ngIf="fbtnLoader; then load else fore"></div>
+                        <ng-template #load>
+                        <div class="spinner-border spinner-border-sm text-light" ></div>
+                        </ng-template>
+                        <ng-template #fore>
+                                Forecast
+                        </ng-template>
+                </button>
+        </div>
+
+    </div>
+
+    <a class="data btn btn-danger fixed d-flex justify-content-center align-items-center" title="Download Dataset here" target="_blank" href="https://drive.google.com/drive/folders/1JFsAYCvZIqaVDhDDnc4YBx3R70B4lIJW?usp=sharing">
+        <span class="material-symbols-outlined text-white" style="font-size: 32px;">
+            folder_open
+        </span>
+    </a>
+
+    <button class="help btn btn-primary fixed d-flex justify-content-center align-items-center" title="help" (click)="help=true">
+        <span class="material-symbols-outlined text-white" style="font-size: 32px;">
+            help
+        </span>
+    </button>
+    
+    <footer class="bg-primary">
+        <div class="text-center text-white">
+            <p class='m-0 py-2'>&copy; 2023 Sale Forecast. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</div>
+
+
+<div class="help-overlay" *ngIf="help">
+    <div class="help-content rounded  p-3 ">
+        <p class="font4">With our powerful and intuitive AI Model, you can accurately predict your future sales and make informed business decisions.</p>
+        <p class="font2">To forecast your sales data follow the steps given below:</p>
+        <p class="font5">Step 1: Kindly download the dataset by clicking the red button on the bottom right and Upolad the dataset here for prediction.</p>
+        <img src="../../assets/h1.png" class="mb-2" width="300px" alt="">
+        <p class="font5">Step 2: Upload the data you've selected!</p>
+        <img src="../../assets/h2.png" class="mb-2" width="300px" alt="">
+        <p class="font5">Step 3: Choose the target variable in the data. eg. sale</p>
+        <img src="../../assets/h3.png" class="mb-2" width="300px" alt="">
+        <p class="font5">Step 4: Select the Time period you want to predict.</p>
+        <img src="../../assets/h4.png" class="mb-2" width="300px" alt="">
+        <p class="font5">Step 5: Select the frequency of time period.</p>
+        <img src="../../assets/h5.png" class="mb-2" width="300px" alt="">
+        <p class="font5">Step 6: Once everything is done! Click the forecast button to get the result!</p>
+        <img src="../../assets/h6.png" class="mb-2" width="300px" alt="">
+
+    </div>
+    <button class="btn btn-danger mt-2" (click)="help=false"> close</button>
+
+</div>

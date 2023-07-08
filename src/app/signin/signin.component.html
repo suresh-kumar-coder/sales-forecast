@@ -1,0 +1,156 @@
+<div class="signin d-flex">
+
+    <div class="left d-none d-md-block">
+
+        <div class="banner">
+            <img src="../../assets/5.png" alt="" width="450px">
+
+            <p class="text-center" 
+            style="color: white; font-size: 28px; font-weight: 500; 
+            opacity: 0.9;">
+                Predict &#8901; Optimize &#8901;Succeed
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="right">
+        <div class="signin-card">
+            <div class="info-text">
+                <p style="font-size: 2rem; font-weight: 500;">
+                    Welcome Back!
+                </p>
+                <p style="opacity: 0.8; font-weight: 500; font-size: 1rem;">
+                    Log in back to your dashboard!
+                </p>
+            </div>
+
+            <div class="warn mb-2 " *ngIf="userNotFound">
+                <div class="d-flex">
+                    <span class="material-symbols-outlined px-2 py-1  text-white" style="cursor: pointer;" >
+                        error
+                    </span>
+                    <div class="m-0 py-1 px-2 font1">
+                        <p class="m-0">
+                            User not found! Please 
+                            <a href="javascript:void(0)" routerLink="/signin">
+                                sign up
+                            </a>
+                            now!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form"
+            #f="ngForm" novalidate
+            (ngSubmit)="f.form.valid && signIn()">
+
+                <div class="form-group mb-2" style="position: relative;">
+
+                    <label for="email" class="font1 d-flex justify-content-between">
+                        Email
+                    </label>
+                    <input type="email" id="email" class="form-control" placeholder="user@mail.com"
+                    [(ngModel)]="signInData.mail" name="email"
+                    #email="ngModel" autocomplete="off"
+                    required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+                    <span class=" font3" *ngIf="submit && email.errors?.['required']">
+                        Email is required
+                    </span>
+                    <span class=" font3" *ngIf="submit && email.errors?.['pattern']">
+                        Invalid email
+                    </span>
+                    <div>
+                        <span class="material-symbols-outlined valid"
+                        *ngIf="!email.errors?.['required'] && !email.errors?.['pattern']">
+                        check_circle
+                        </span>
+                        <span class="material-symbols-outlined invalid"
+                        *ngIf=" submit && (email.errors?.['required'] || email.errors?.['pattern'])">
+                        error
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group mb-2" style="position: relative;">
+                    <label for="password" class="font1">
+                        Password
+                    </label>
+                    <div class="input-group">
+                        <input type="password" id="password" class="form-control" placeholder="password" 
+                        name="password" #password #pass="ngModel"  [(ngModel)]="signInData.password" 
+                        required>
+
+                        <div class="input-group-text bg-primary text-white" 
+                        (click) ="password.type = password.type == 'text' ? 'password' : 'text' " 
+                        style="cursor: pointer;">
+                            <div *ngIf="password.type == 'text'; then vis else novis"></div>
+                            <ng-template #vis>
+                                <span class="material-symbols-outlined" style="cursor: pointer;">
+                                    visibility
+                                    </span>
+                            </ng-template>
+                            <ng-template #novis>
+                                <span class="material-symbols-outlined">
+                                    visibility_off
+                                    </span>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <span class="font3" *ngIf="submit && pass.errors?.['required']">
+                        Password is required<br>
+                    </span>
+                    <span class="font3" *ngIf="submit && passIncorrect">
+                        Incorrect password!
+                    </span>
+                    <div>
+                        <span class="material-symbols-outlined valid" style="right: 55px;"
+                        *ngIf="!pass.errors?.['required'] && !pass.errors?.['pattern']">
+                        check_circle
+                        </span>
+                        <span class="material-symbols-outlined invalid" style="right: 55px;"
+                        *ngIf=" submit && (pass.errors?.['required'] || pass.errors?.['pattern'])">
+                        error
+                        </span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="rm" name="rm" [(ngModel)]="rememberMe" checked>
+                        <label class="form-check-label font1" for="rm" >
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="forgot-pass font1">
+                        <a href="javascript:void(0)" routerLink="/forgot-password">forgot password</a>
+                    </div>
+                </div>
+    
+                <button class="btn btn-primary mt-4 w-100" type="submit" (click)="submit= true" [disabled]="loader">
+                    <div *ngIf="loader; then load else sign"></div>
+                    <ng-template #load>
+                    <div class="spinner-border spinner-border-sm text-light" ></div>
+                    </ng-template>
+                    <ng-template #sign>
+                        Sign in
+                    </ng-template>
+                </button>
+            
+            </form>
+    
+            <div class=" mt-5 ">
+                <p class="text-center" style="opacity: 0.9; font-weight: 500; font-size: 14px;">
+                    Don't have an account? 
+                    <a href="javascript:void(0)" routerLink="/signup">
+                        Sign Up
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
