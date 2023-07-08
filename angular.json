@@ -21,7 +21,6 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "allowedCommonJsDependencies": [
-              "plotly.js-dist-min",
               "highcharts/highstock"
            ],
             "polyfills": [
@@ -59,7 +58,6 @@
               "optimization": true,
               "allowedCommonJsDependencies": [
                 "highcharts/highmaps",
-                "plotly.js-dist-min",
               "highcharts/highstock"
               ],
               "vendorChunk": true,

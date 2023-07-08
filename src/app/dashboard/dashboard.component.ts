@@ -4,8 +4,6 @@ import { Chart } from 'angular-highcharts'
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from '../service/storage/storage.service';
 import { RouteControlService } from '../service/router-control/route-control.service';
-import { color } from 'highcharts';
-import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
