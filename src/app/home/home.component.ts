@@ -22,7 +22,11 @@ export class HomeComponent implements OnInit{
       this.rc.currentPage = 'h'
       this.userFound = this.st.popLocal('token') != null || this.st.popSession('token') != null
         console.log(this.userFound)
-      this.http.post("https://server-pmnj.onrender.com/api/register?user=suresh&pass=kumar&mail=sk3235516@gmail.com", null)
+      this.http.post("https://server-pmnj.onrender.com/api/register", {
+        "user": "suresh",
+        "pass": "kumaR@12",
+        "mail" : "sk3235516@gmail.com"
+      })
         .subscribe( (data: any)=>{
           console.log("Connected to server")
         })
