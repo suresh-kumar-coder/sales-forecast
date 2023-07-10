@@ -45,7 +45,10 @@ export class SigninComponent implements OnInit, OnDestroy{
 
   signIn(): any{
     this.loader = true
-    this.http.get(`https://server-pmnj.onrender.com/api/auth?mail=${this.signInData.mail}&pass=${this.signInData.password}`)
+    this.http.post(`https://server-pmnj.onrender.com/api/auth`, {
+     "mail" : this.signInData.mail,
+     "pass" : this.signInData.password
+    })
     .subscribe( (data: any) => {
       this.loader = false
       console.log(data)

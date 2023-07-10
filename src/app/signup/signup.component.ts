@@ -60,7 +60,11 @@ export class SignupComponent {
     signup(): any{
       console.log('API called')
       this.loader = true
-      this.http.post(`https://server-pmnj.onrender.com/api/register?user=${this.signUpData.username}&pass=${this.signUpData.password}&mail=${this.signUpData.mail}`, null)
+      this.http.post(`https://server-pmnj.onrender.com/api/register`, {
+        'user': this.signUpData.username,
+        'pass': this.signUpData.password,
+        'mail': this.signUpData.mail
+      })
       .subscribe( (data: any) => {
         this.loader = false
         this.passConditionShow = false
