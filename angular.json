@@ -22,7 +22,8 @@
             "main": "src/main.ts",
             "allowedCommonJsDependencies": [
               "plotly.js-dist-min",
-              "highcharts/highstock"
+              "highcharts/highstock",
+              "crypto-js"
            ],
             "polyfills": [
               "zone.js"
@@ -60,7 +61,8 @@
               "allowedCommonJsDependencies": [
                 "highcharts/highmaps",
                 "plotly.js-dist-min",
-              "highcharts/highstock"
+              "highcharts/highstock",
+              "crypto-js"
               ],
               "vendorChunk": true,
               "extractLicenses": false,

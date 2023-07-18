@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouteControlService } from '../service/router-control/route-control.service';
 import { Router } from '@angular/router';
 import { StorageService } from '../service/storage/storage.service';
+import { HashService } from '../service/hashing/hash.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +13,7 @@ import { StorageService } from '../service/storage/storage.service';
 export class SigninComponent implements OnInit, OnDestroy{
   
   constructor( private http: HttpClient, private rc:RouteControlService,
-     private route: Router, private storage: StorageService){
+     private route: Router, private storage: StorageService, private hash: HashService){
 
   }
 
@@ -47,7 +48,7 @@ export class SigninComponent implements OnInit, OnDestroy{
     this.loader = true
     this.http.post(`https://server-pmnj.onrender.com/api/auth`, {
      "mail" : this.signInData.mail,
-     "pass" : this.signInData.password
+     "pass" : this.hash.hashPassword(this.signInData.password)
     })
     .subscribe( (data: any) => {
       this.loader = false

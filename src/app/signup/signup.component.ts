@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RouteControlService } from '../service/router-control/route-control.service';
+import { HashService } from '../service/hashing/hash.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,8 @@ import { RouteControlService } from '../service/router-control/route-control.ser
 })
 export class SignupComponent {
 
-  constructor( private http: HttpClient, private rc:RouteControlService, private route: Router){
+  constructor( private http: HttpClient, private rc:RouteControlService, 
+    private route: Router, private hash: HashService){
 
   }
 
@@ -62,7 +64,7 @@ export class SignupComponent {
       this.loader = true
       this.http.post(`https://server-pmnj.onrender.com/api/register`, {
         'user': this.signUpData.username,
-        'pass': this.signUpData.password,
+        'pass': this.hash.hashPassword(this.signUpData.password),
         'mail': this.signUpData.mail
       })
       .subscribe( (data: any) => {
