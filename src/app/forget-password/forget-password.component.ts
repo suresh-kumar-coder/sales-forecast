@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouteControlService } from '../service/router-control/route-control.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
   styleUrls: ['./forget-password.component.scss']
 })
-export class ForgetPasswordComponent {
+export class ForgetPasswordComponent{
 
-
-  constructor( private http: HttpClient, public rc: RouteControlService){
+  constructor( private http: HttpClient, public rc: RouteControlService, private route: Router){
 
   }
 
   submit: boolean = false
 
-  loader: boolean = false
+  loader1: boolean = false
+  loader2: boolean = false
 
   userNotFound: boolean = false
 
@@ -35,47 +36,64 @@ export class ForgetPasswordComponent {
       if (this.otpTimeOut > 0) {
         this.otpTimeOut--;
       } else {
-        clearInterval(this.timer);
+        this.stopCountdown();
       }
     }, 1000);
   }
 
+  stopCountdown(): void {
+    clearInterval(this.timer);
+    this.otpTimeOut = 120;
+  }
+
   sendOtp(flag: string = ''): any{
-    this.loader = true
     
     if(flag=='r'){
       this.rc.flag.otpsent=false
       this.otpTimeOut = 120
     }
 
-    if(this.rc.flag.otpsent){
-      this.http.get(`http://localhost:5000/api/otpv?mail=${this.userData.mail}.com&otp=${this.userData.otp}`)
-      .subscribe( (data: any) => {
-        this.loader = false
-        if(data['status']['statusCode'] == '0'){
-          console.log('Not Match')
-
-        }
-        else{
-          console.log('Match')
-        }
-      } )
-    }
-    else{
-      this.http.get(`http://localhost:5000/api/forgot?mail=${this.userData.mail}`)
+      this.loader1 = true;
+      this.http.get(`https://server-pmnj.onrender.com/api/forgotpassword?mail=${this.userData.mail}`)
       .subscribe( (data: any) =>{
-      this.loader = false
-      if(data['status']['statusCode'] == '0'){
+      this.loader1 = false
+      if(data['status']['statusCode'] == 'UNF'){
         this.userNotFound = true
+      }
+      else if(data['status']['statusCode'] == '500'){
+        alert("Server is not responding. Please try again!!!")
       }
       else{
         this.userNotFound = false
         this.rc.flag.otpsent = true
-        console.log('OTP sent')
         this.countDown()
       }
     } )
-    }
+  }
+
+  verifyOtp(): void{
+    this.loader2 = true
+    this.http.post(`https://server-pmnj.onrender.com/api/otpverify?mail=${this.userData.mail}&otp=${this.userData.otp}`, {
+      "url": window.location.href
+    })
+      .subscribe( (data: any) => {
+        this.loader2 = false
+        console.log(data)
+        if(data['status']['statusCode'] == "ONM"){
+          alert("OTP not matching. Please try again.")
+          this.userData.otp = ''
+        }
+        else if(data['status']['statusCode'] == "OE"){
+          alert("OTP Expired. Please try again.")
+          this.userData.otp = ''
+        }
+        else{
+          alert("OTP is successfully verified.\n\nCheck your mail for url to reset your password.")
+          this.rc.flag.otpsent = false
+          this.rc.flag.otpverified = false
+          this.route.navigate(['/signin'])
+        }
+      } )
   }
 
 }

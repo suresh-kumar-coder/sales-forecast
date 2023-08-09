@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { AccessDenyComponent } from './access-deny/access-deny.component';
 import { HomeComponent } from './home/home.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {path:"signin", component: SigninComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:"forgot-password", component: ForgetPasswordComponent},
   {path:'nav', component: NavbarComponent},
   {path:'accessdenied', component: AccessDenyComponent},
+  {path: 'resetpassword', component: ResetPasswordComponent},
   {path:'home', component: HomeComponent},
   { path:"**", redirectTo: "/pagenotfound404", pathMatch: 'full'}
 ];

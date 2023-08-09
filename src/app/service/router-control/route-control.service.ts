@@ -10,6 +10,7 @@ export class RouteControlService {
     logToSuccess : false,
     regToLog : false,
     otpsent: false,
+    otpverified: false,
     dashToAd: false
   }
 

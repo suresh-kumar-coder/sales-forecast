@@ -70,9 +70,11 @@ export class SignupComponent {
       .subscribe( (data: any) => {
         this.loader = false
         this.passConditionShow = false
-        console.log(data)
         if( data['status']['statusCode']=='409'){
           this.userFound = true
+        }
+        else if( data['status']['statusCode']=='500'){
+          alert("Server issue. Please Try Again!!!")
         }
         else{
           this.rc.flag.regToSuccess = true

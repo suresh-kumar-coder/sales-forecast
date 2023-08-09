@@ -18,6 +18,7 @@ import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import { AccessDenyComponent } from './access-deny/access-deny.component';
 import { HomeComponent } from './home/home.component';
 import * as plotly from 'plotly.js-dist-min';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -35,6 +36,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     ForecastComponent,
     AccessDenyComponent,
     HomeComponent,
+    ResetPasswordComponent,
     
   ],
   imports: [
