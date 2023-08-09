@@ -1,29 +1,74 @@
-# SalesForecast
+# Salesforecast Web Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+Salesforecast is a web application developed using Angular, Python, Flask, MongoDB, Angular Highcharts, and Prophet time series model. It provides features for sales forecasting and analysis.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The web application includes the following features:
 
-## Code scaffolding
+- **Home Page**: Displays an overview of the entire application and its features.
+- **Login Page**: Allows users to log in to their accounts.
+- **Sign Up Page**: Enables new users to create an account with password validation and error handling.
+- **Forecast Page**: Allows users to input past sales data and time stands for prediction using the Prophet ML model.
+- **Dashboard Page**: Provides an interactive live graph, daily, weekly, and monthly insights, and evaluation metrics.
+- **Error Handling Pages**: Includes dedicated pages for handling common errors, such as the Page Not Found Error (404) and session errors.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
 
-## Build
+The Salesforecast web application utilizes the following technologies:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular**: A popular frontend JavaScript framework for building responsive web applications.
+- **Bootstrap**: A CSS framework that helps create a responsive and visually appealing user interface.
+- **Python**: A powerful programming language used for backend development.
+- **Flask**: A lightweight web framework for Python used to build the backend APIs.
+- **MongoDB**: A NoSQL database for storing and retrieving data.
+- **Angular Highcharts**: A library for creating interactive charts and graphs in Angular applications.
+- **Prophet Model**: An open-source machine learning library developed by Facebook for time series forecasting.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Check out the live deployment of the project: [Project Deployment](https://salesforecastweb.web.app/)
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Overview
 
-## Further help
+#### Home Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# sales-forecast
-# sales-forecast
+![Example Image](https://i.imgur.com/AIVqUQz.png)
+
+#### Sign Up Page
+
+![Example Image](https://i.imgur.com/sIpK8al.png)
+
+![Example Image](https://i.imgur.com/29FbmBT.png)
+
+![Example Image](https://i.imgur.com/MGBl6He.png)
+
+![Example Image](https://i.imgur.com/9sXu3u2.png)
+
+![Example Image](https://i.imgur.com/9d0ycKB.png)
+
+#### Login Page
+
+![Example Image](https://i.imgur.com/tXBxWAL.png)
+
+![Example Image](https://i.imgur.com/cQykJTE.png)
+
+![Example Image](https://i.imgur.com/sIn2Zg7.png)
+
+#### Forecast Page
+
+![Example Image](https://i.imgur.com/UBtGpA9.png)
+
+![Example Image](https://i.imgur.com/C1LMSAX.png)
+
+#### Dashboard
+
+![Example Image](https://i.imgur.com/ZdlUEAn.png)
+
+#### Error Handling Pages
+
+![Example Image](https://i.imgur.com/NY7l4Px.png)
+
+![Example Image](https://i.imgur.com/8KIaouR.png)
+
+![Example Image](https://i.imgur.com/Re9auvH.png)
