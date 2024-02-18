@@ -17,6 +17,5 @@ export class AccessDenyComponent implements OnInit, OnDestroy{
   }
   ngOnDestroy(): void {
       this.rc.flag.dashToAd = false
-      this.route.navigate(['/home'])
   }
 }

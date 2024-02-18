@@ -74,6 +74,9 @@ export class SignupComponent {
           this.userFound = true
         }
         else if( data['status']['statusCode']=='500'){
+          alert("Couldn't reach the server. Please Try Again!!!")
+        }
+        else if( data['status']['statusCode']=='400'){
           alert("Server issue. Please Try Again!!!")
         }
         else{

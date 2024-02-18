@@ -51,6 +51,7 @@ export class DashboardComponent implements OnInit{
     if(this.storage.popSession('token')==null && this.storage.popLocal('token')==null){
       this.rc.flag.dashToAd = true
       this.route.navigate(['/accessdenied'])
+      return
     }
 
     if(this.storage.popLocal('forecast')!= '1' || this.storage.popSession('forecast')== '1'){
